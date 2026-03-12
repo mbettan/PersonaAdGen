@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "persona-ad-gen"
+version = "0.1.0"
+description = "Personalized Ad Creation Engine: An AI agent that generates advertising assets from your photos."
+authors = ["Michael Bettan"]
+license = "Apache License 2.0"
+readme = "README.md"
+packages = [{include = "persona_ad_gen", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-adk = {version = "^1.0.0", extras = ["web"]}
+google-genai = "^1.32.0"
+pydantic = "^2.10.6"
+python-dotenv = "^1.0.1"
+google-cloud-aiplatform = { version = "^1.111.0", extras = [
+    "adk",
+    "agent-engines",
+] }
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+google-adk = { extras = ["eval", "web"], version = "^1.0.0" }
+google-cloud-aiplatform = { version = "^1.111.0", extras = [
+    "adk",
+    "agent-engines",
+    "evaluation",
+] }
+pytest = "^8.3.5"
+black = "^25.1.0"
+pytest-asyncio = "^0.26.0"
+pandas = "^2.2.3"
+tabulate = "^0.9.0"
+
+[tool.poetry.group.deployment]
+optional = true
+
+[tool.poetry.group.deployment.dependencies]
+absl-py = "^2.2.1"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
