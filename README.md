@@ -2,6 +2,8 @@
 
 This project implements an AI-powered advertising content generator that transforms user photos into compelling, persona-driven advertising scenes. The agent guides users through a story-driven brief collection process, automatically generates headlines, and creates multiple advertising scenes tailored to specific target audiences.
 
+**Live Showcase:** [https://mbettan.github.io/PersonaAdGen/](https://mbettan.github.io/PersonaAdGen/)
+
 ## Overview
 
 The Persona Ad Gen agent is designed to revolutionize advertising content creation by focusing on the human story behind every great ad. Instead of traditional form-filling, it engages users in a conversational journey to understand their ideal customer's problems, desires, and motivations. The agent then leverages this deep understanding to generate visually compelling advertising scenes that resonate with the target audience.
@@ -113,13 +115,10 @@ The agent has access to the following tools:
    ```
 
 2. Clone the repository:
-
    ```bash
-   git clone git@github.com:mbettan/PersonaAdGen.git
-   cd persona_ad_gen
+   git clone https://github.com/mbettan/PersonaAdGen.git
+   cd PersonaAdGen
    ```
-
-   For the rest of this tutorial **ensure you remain in the `agents/persona_ad_gen` directory**.
 
 3. Install dependencies using Poetry:
 
@@ -286,6 +285,21 @@ Evaluation tests assess the agent's conversation flow and response accuracy.
    This runs specific test cases including:
    - `test_agent_introduction` - Verifies the agent provides the correct introduction
 
+### Automated End-to-End Testing
+
+For a full, unattended validation of the agent (including headline and image generation), you can use the provided test utility. This script simulates a complete user interaction flow.
+
+**Steps:**
+
+1.  **Ensure Environment Variables are Set**: Ensure `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION`, and `ADK_GCS_BUCKET_NAME` are either in your `.env` file or exported in your shell.
+
+2.  **Run the Test Script**:
+    ```bash
+    poetry run python run_persona_test.py docs/assets/input_outdoor.jpg
+    ```
+
+The script will iterate through a pre-defined conversation, process the image, and generate advertising scenes, saving them as artifacts in the `.adk/artifacts/` directory.
+
 ## Configuration
 
 ### Model Configuration
@@ -342,11 +356,29 @@ To deploy the agent to Vertex AI Agent Engine:
    python deployment/deploy.py --list
    ```
 
-4. **Delete a deployment:**
-
+4. **Delete a deployment**:
    ```bash
    python deployment/deploy.py --delete --resource_id=AGENT_ENGINE_ID
    ```
+
+## Integration with Gemini Enterprise
+
+You can register your Persona Ad Gen agent to be used within Gemini Enterprise applications. This allows users to access your custom ad generation capabilities directly through the Gemini for Google Cloud interface.
+
+### Registration Steps
+
+1.  **Deploy your Agent**: Follow the [Deployment](#deployment-on-google-agent-engine) steps above to host your agent on Vertex AI Agent Engine.
+2.  **Get the Resource Path**: Obtain the Agent Engine resource path for your deployed agent. The format is:
+    `https://LOCATION-aiplatform.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/reasoningEngines/ADK_RESOURCE_ID`
+3.  **Register in Gemini Enterprise**:
+    - Navigate to the [Gemini Enterprise](https://console.cloud.google.com/gemini-enterprise/) page in the Google Cloud console.
+    - Choose the specific application you want to add the agent to.
+    - Go to **Agents** > **Add agent** > **Custom agent via Agent Engine**.
+    - Enter a display name and a description that helps the model understand when to invoke the agent.
+    - Paste the resource path from Step 2.
+4.  **Configure Authorizations**: If your agent needs to access Google Cloud resources on behalf of the user, set up the required authorizations in the panel.
+
+For more details, see the [Official Registration Guide](https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent#register-an-adk-agent).
 
 ### Testing Deployment
 
@@ -379,28 +411,24 @@ for event in agent_engine.stream_query(
 ## Project Structure
 
 ```
-persona_ad_gen/
-├── __init__.py
-├── agent.py                    # Main agent definition and orchestration
-├── tools.py                    # Core tool implementations
-├── advanced_tools.py           # Extended tool functions
-├── models.py                   # Pydantic data models
-├── advanced_models.py          # Extended data structures
-├── debug_image_handler.py      # Image processing utilities
-└── sub_agents/
-    ├── __init__.py
-    ├── creative_agent.py       # Scene generation sub-agent
-    └── headline_agent.py       # Headline generation logic
-
-eval/
-├── test_eval.py               # Unit tests for agent behavior
-└── data/
-    └── persona_ad_gen_evalset.test.json  # Evaluation test cases
+PersonaAdGen/
+├── docs/                       # Marketing website & GitHub Pages source
+├── persona_ad_gen/             # Main agent source code
+│   ├── __init__.py
+│   ├── agent.py                # Main agent definition and orchestration
+│   ├── tools.py                # Core tool implementations
+│   ├── ...
+│   └── sub_agents/             # Specialized sub-agents
+├── eval/                       # Evaluation and unit tests
+│   ├── test_eval.py            # Unit tests for agent behavior
+│   └── data/                   # Evaluation test cases
+├── run_persona_test.py         # End-to-end test utility
+└── pyproject.toml              # Project dependencies and configuration
 ```
 
 ## Troubleshooting
 
-### Common Issues and Solutions
+### Common Issues and solutions
 
 1. **Evaluation module not found:**
    ```bash
