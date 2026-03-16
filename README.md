@@ -4,6 +4,8 @@ This project implements an AI-powered advertising content generator that transfo
 
 **Live Showcase:** [https://mbettan.github.io/PersonaAdGen/](https://mbettan.github.io/PersonaAdGen/)
 
+![Live Showcase](docs/assets/readme_showcase.png)
+
 ## Overview
 
 The Persona Ad Gen agent is designed to revolutionize advertising content creation by focusing on the human story behind every great ad. Instead of traditional form-filling, it engages users in a conversational journey to understand their ideal customer's problems, desires, and motivations. The agent then leverages this deep understanding to generate visually compelling advertising scenes that resonate with the target audience.
