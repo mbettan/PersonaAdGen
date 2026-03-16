@@ -1,6 +1,6 @@
 # Persona Ad Gen - AI-Powered Advertising Scene Generator
 
-This project implements an AI-powered advertising content generator that transforms user photos into compelling, persona-driven advertising scenes. The agent guides users through a story-driven brief collection process, automatically generates headlines, and creates multiple advertising scenes tailored to specific target audiences.
+This project implements an AI-powered advertising content generator that transforms user photos into compelling, persona-driven advertising scenes. The agent guides users through a story-driven brief collection process, automatically generates headlines, and creates multiple advertising scenes tailored to specific target audiences. Powered by **Gemini 3 Pro Image**, **Veo 3.1**, **Gemini 3.1 Flash** & **ADK**.
 
 **Live Showcase:** [https://mbettan.github.io/PersonaAdGen/](https://mbettan.github.io/PersonaAdGen/)
 
@@ -63,6 +63,12 @@ The agent is built using a multi-agent architecture with specialized components:
   - Transforms uploaded images into 4 distinct advertising scenes
   - Each scene tells a different aspect of the brand story
   - Optimized for various marketing channels
+  - Powered by **Gemini 3 Pro Image**
+
+- **Cinematic Video Extension:**
+  - Each scene is extended into an 8-second cinematic video by **Veo 3.1**
+  - Native audio synchronization and 24 FPS temporal consistency
+  - All four scenes are concatenated into a single, production-ready 29-second reel
 
 - **Session State Management:**
   - Maintains context throughout the conversation
@@ -153,9 +159,9 @@ The agent has access to the following tools:
 
    Create a `.env` file in the project root with the following variables:
    ```bash
-   # Google Cloud Project Configuration (global is must have for Gemini 3 Flash Images)
+   # Google Cloud Project Configuration
    export GOOGLE_CLOUD_PROJECT=your-project-id
-   export GOOGLE_CLOUD_LOCATION=global
+   export GOOGLE_CLOUD_LOCATION=us-central1
    
    # Artifact Storage Configuration
    export ADK_ARTIFACT_SERVICE_TYPE=GCS
@@ -295,23 +301,22 @@ For a full, unattended validation of the agent (including headline and image gen
 
 2.  **Run the Test Script**:
     ```bash
-    poetry run python run_persona_test.py docs/assets/input_outdoor.jpg
+    poetry run python run_persona_test.py docs/assets/example_scene.jpg
     ```
 
 The script will iterate through a pre-defined conversation, process the image, and generate advertising scenes, saving them as artifacts in the `.adk/artifacts/` directory.
 
 ## Configuration
 
-### Model Configuration
-
 The agent uses the following models:
-- **Main Agent:** `gemini-3.1-pro-preview` for conversation and reasoning
-- **Image Generation:** `gemini-3.1-flash-image-preview` for creating advertising scenes
+- **Main Agent:** `gemini-3-flash-preview` for conversation and reasoning
+- **Scene Transformation:** `gemini-3-pro-image-preview` for transforming base images into ad scenes
+- **Video Extension:** `veo-3.1-generate-001` for extending scenes into cinematic 8-second videos
 
 You can modify these in `persona_ad_gen/agent.py`:
 
 ```python
-MODEL = "gemini-3.1-pro-preview"  # Change this to use a different model (e.g., Gemini 3.1 Pro)
+MODEL = "gemini-3-flash-preview"  # Change this to use a different model
 ```
 
 ### Session State Structure
@@ -445,7 +450,7 @@ PersonaAdGen/
 3. **Image generation failures:**
    - Verify that `GOOGLE_GENAI_USE_VERTEXAI` is correctly set
    - Check API quotas and limits in your Google Cloud project
-   - Ensure the model `gemini-3.1-flash-image-preview` is available in your region
+   - Ensure the model `gemini-3-pro-image-preview` is available in your region
 
 4. **Missing environment variables:**
    - Ensure all required variables are set in your `.env` file

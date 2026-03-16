@@ -1,0 +1,30 @@
+# System Files
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+**/*.pyc
+.pytest_cache/
+.venv/
+dist/
+build/
+
+# Project Specific
+outputs/
+test_output.log
+inspect_metadata.txt
+example_scene.jpg
+
+# Diagnostic / Helper Scripts (Temporary)
+check_sdk_help.py
+check_video_uri.py
+diag_*.py
+diagnose_*.py
+discover_latest_models.py
+inspect_video_metadata.py
+inspect_video_obj.py
+list_models_v2.py
+read_pdf_docs.py
+test_config_params.py
+eval/test_video_gen.py

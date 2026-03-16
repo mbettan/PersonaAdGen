@@ -4,7 +4,7 @@ from google.adk.tools import ToolContext
 import google.genai as genai
 import os
 
-MODEL = "gemini-3.1-pro-preview"
+MODEL = "gemini-3-flash-preview"
 
 async def generate_headlines_from_brief(tool_context: ToolContext) -> str:
     """
@@ -39,34 +39,21 @@ async def generate_headlines_from_brief(tool_context: ToolContext) -> str:
         
         # Create the headline generation prompt
         headline_prompt = f"""You are an expert advertising copywriter specializing in creating compelling headlines that convert.
-
-Based on this persona-driven brief, generate 8-12 powerful headlines:
-
+ 
+Based on this persona-driven brief, generate exactly **ONE** powerful, conversion-focused headline:
+ 
 **Ideal Customer:** {ideal_customer}
 **Core Message:** {core_message}
 **Tone of Voice:** {tone_of_voice}
-
-Create headlines that:
-1. Speak directly to the ideal customer's pain points and desires
-2. Capture the essence of the core message
-3. Match the specified tone of voice
-4. Are compelling and action-oriented
-5. Vary in length and approach (some short and punchy, others more descriptive)
-6. Include emotional triggers that resonate with the target audience
-
-Generate headlines in different styles:
-- Problem/Solution focused
-- Benefit-driven
-- Curiosity-inducing
-- Social proof/testimonial style
-- Urgency/scarcity driven
-- Question-based
-- Direct and bold statements
-
-Format your response as a numbered list of headlines, each on a new line.
-Focus on quality over quantity - each headline should be compelling and conversion-focused.
-
-IMPORTANT: Only generate the numbered list of headlines. Do not include any other text, explanations, or formatting."""
+ 
+Create a headline that:
+1. Speaks directly to the ideal customer's pain points and desires
+2. Captures the essence of the core message
+3. Matches the specified tone of voice
+4. Is compelling and action-oriented
+5. Includes emotional triggers that resonate with the target audience
+ 
+IMPORTANT: Only generate the headline text. Do not include any numbers, bullets, quotes, explanations, or formatting."""
         
         print(f"🤖 Calling Google Gen AI with prompt length: {len(headline_prompt)}")
         
@@ -83,42 +70,28 @@ IMPORTANT: Only generate the numbered list of headlines. Do not include any othe
         print(f"📝 Response preview: {result_text[:300]}...")
         
         # Parse the response to extract headlines
-        headlines = []
-        lines = result_text.strip().split('\n')
-        print(f"🔍 Parsing {len(lines)} lines from response")
+        headline = result_text.strip()
+        # Basic cleanup: remove leading/trailing quotes or dots if any
+        headline = headline.strip(' ".\n')
         
-        for i, line in enumerate(lines):
-            line = line.strip()
-            
-            if line and (line[0].isdigit() or line.startswith('-') or line.startswith('•')):
-                # Remove numbering/bullets and clean up
-                headline = line
-                # Remove common prefixes
-                for prefix in ['1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', '11.', '12.', '-', '•']:
-                    if headline.startswith(prefix):
-                        headline = headline[len(prefix):].strip()
-                        break
-                
-                if headline and len(headline) > 5:  # Basic validation
-                    headlines.append(headline)
-                    print(f"    ✅ Added headline: '{headline}'")
+        print(f"🎯 Final headline: '{headline}'")
         
-        print(f"🎯 Found {len(headlines)} headlines after parsing")
-        
-        if len(headlines) < 5:
-            print(f"❌ Not enough headlines generated. Only found {len(headlines)}")
+        if not headline or len(headline) < 5:
+            print(f"❌ Failed to generate a quality headline.")
             print(f"📝 Full LLM response for debugging:\n{result_text}")
-            return f"❌ Could not generate enough quality headlines. Only found {len(headlines)} headlines. Generated response: {result_text[:500]}..."
+            return f"❌ Could not generate a quality headline. Generated response: {result_text[:500]}..."
+        
+        headlines = [headline]
         
         # Update the brief with generated headlines
-        brief_data["headlines"] = headlines[:12]  # Limit to 12 headlines
+        brief_data["headlines"] = headlines
         tool_context.state["confirmed_brief"] = brief_data
         
         # Format the response
-        headline_list = '\n'.join([f"• {headline}" for headline in headlines[:12]])
+        headline_list = f"• {headline}"
         
-        return f"""✅ **Generated {len(headlines[:12])} Compelling Headlines**
-
+        return f"""✅ **Generated 1 Compelling Headline**
+ 
 {headline_list}
 
 **Headlines Analysis:**

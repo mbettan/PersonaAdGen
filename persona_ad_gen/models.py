@@ -24,6 +24,7 @@ class PersonaDrivenAdBrief(BaseModel):
     # Optional paths for additional assets
     creative_brief_gcs_path: Optional[str] = None
     brand_logo_gcs_path: Optional[str] = None
+    video_gcs_paths: Optional[List[str]] = None
 
 # Keep the old model for backward compatibility
 class VideoAdBrief(BaseModel):

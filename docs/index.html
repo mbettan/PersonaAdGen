@@ -4,192 +4,862 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persona Ad Gen | AI-Powered Storytelling for Advertising</title>
+    <title>PersonaAdGen — Cinematic AI Advertising, Powered by Gemini 3 Pro Image</title>
     <meta name="description"
-        content="Generate high-fidelity advertising scenes from your photos using the power of Gemini and persona-driven storytelling.">
+        content="Transform a photo and a conversation into 4 cinematic advertising scenes extended into a 29-second video. Powered by Gemini 3 Pro Image, Veo 3.1 & ADK.">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="bg-blobs">
+<!-- ░░ BACKGROUND ░░ -->
+<div class="bg-canvas" aria-hidden="true">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
     </div>
 
-    <nav>
+    <!-- ░░ NAV ░░ -->
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container nav-content">
-            <div class="logo">Persona<span class="gradient-text">AdGen</span></div>
+            <a href="#" class="logo" aria-label="PersonaAdGen home">
+                <span class="logo-icon" aria-hidden="true">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                </span>
+                Persona<span class="gradient-text">AdGen</span>
+            </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
+                <a href="#pipeline">Pipeline</a>
                 <a href="#showcase">Showcase</a>
-
+                <a href="#audience">Who It's For</a>
             </div>
+            <a href="https://github.com/mbettan/PersonaAdGen" class="btn btn-nav" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+                <span>Get Started</span>
+            </a>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container hero-content">
-            <h1>Ads that <span class="gradient-text">Feel Like Stories</span>, Not Forms.</h1>
-            <p>Revolutionize your creative workflow. Persona Ad Gen uses conversational AI to turn your brand's vision
-                and photos into stunning, professional advertising scenes in seconds.</p>
-            <div class="cta-group">
-                <a href="#showcase" class="btn btn-primary">See the Magic</a>
-                <a href="#features" class="btn btn-outline">Explore Features</a>
-            </div>
-        </div>
+    <!-- ░░ HERO ░░ -->
+    <header class="hero" id="top">
+        <div class="hero-inner container">
+    
+            <!-- Left: Copy -->
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot" aria-hidden="true"></span>
+                    Gemini 3 Pro Image — Live &amp; Generating
+                </div>
+    
+                <h1>
+                    One photo.<br>
+                    One conversation.<br>
+                    <span class="gradient-text">Four cinematic ads.</span>
+                </h1>
+    
+                <p class="hero-sub">
+                    Persona Ad Gen replaces the brief, the shoot, and the edit suite.
+                    Describe your ideal customer in plain English, drop in a photo, and
+                    receive four persona-tailored advertising scenes extended into a
+                    production-ready video — in under five minutes.
+                </p>
+    
+                <div class="cta-group">
+                    <a href="#showcase" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Watch it Work
+                    </a>
+                    <a href="#pipeline" class="btn btn-ghost">
+                        See the Pipeline
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                    </div>
+<div class="hero-stats" role="list" aria-label="Key metrics">
+    <div class="stat" role="listitem">
+        <span class="stat-num">&lt;5<span class="stat-unit">min</span></span>
+        <span class="stat-label">Brief to 4 videos</span>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat" role="listitem">
+                        <span class="stat-num">4<span class="stat-unit">×</span></span>
+                        <span class="stat-label">Distinct ad scenes</span>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat" role="listitem">
+                        <span class="stat-num">8<span class="stat-unit">s</span></span>
+                        <span class="stat-label">Per scene, 24 FPS</span>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat" role="listitem">
+                        <span class="stat-num">0</span>
+                        <span class="stat-label">Forms to fill</span>
+                    </div>
+                    </div>
+                    </div>
+                    
+                    <!-- Right: Animated Chat Widget -->
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="agent-window">
+                            <div class="window-chrome">
+                                <span class="chrome-dot red"></span>
+                                <span class="chrome-dot yellow"></span>
+                                <span class="chrome-dot green"></span>
+                                <span class="chrome-label">Creative Agent — Persona Mode</span>
+                            </div>
+                            <div class="window-body">
+                                <div class="chat-bubble agent">
+                                    <div class="bubble-avatar"><i class="fas fa-robot"></i></div>
+                                    <div class="bubble-text">
+                                        Let's build your persona. Who are you trying to reach — and what keeps them up at night?
+                                    </div>
+                                </div>
+                                <div class="chat-bubble user">
+                                    <div class="bubble-text">
+                                        Adventure seekers, 28–35. They crave authenticity and hate overly polished ads.
+                                    </div>
+                                    <div class="bubble-avatar"><i class="fas fa-user"></i></div>
+                                </div>
+                                <div class="chat-bubble agent">
+                                    <div class="bubble-avatar"><i class="fas fa-robot"></i></div>
+                                    <div class="bubble-text">
+                                        Perfect. Raw, real, cinematic. Generating 4 scenes with Gemini 3 Pro Image…
+                                    </div>
+                                </div>
+                                <div class="agent-progress">
+                                    <div class="progress-steps">
+                                        <div class="progress-step done">
+                                            <i class="fas fa-check"></i>
+                                            <span>Persona calibrated</span>
+                                        </div>
+                                        <div class="progress-step done">
+                                            <i class="fas fa-check"></i>
+                                            <span>4 scenes generated</span>
+                                        </div>
+                                        <div class="progress-step active">
+                                            <span class="spinner"></span>
+                                            <span>Veo 3.1 extending scenes…</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar-wrap">
+                                        <div class="progress-bar-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Floating output previews -->
+                        <div class="float-badge float-1">
+                            <i class="fas fa-film"></i>
+                            <div>
+                                <strong>Scene 3 Ready</strong>
+                                <span>8s · 24 FPS · Native audio</span>
+                            </div>
+                        </div>
+                        <div class="float-badge float-2">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <div>
+                                <strong>Headline Generated</strong>
+                                <span>"Made for those who wander"</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <!-- Scroll cue -->
+                    <a href="#tech-bar" class="scroll-cue" aria-label="Scroll down">
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
     </header>
 
-    <section id="features">
+    <!-- ░░ TECH STACK BAR ░░ -->
+    <div class="tech-bar" id="tech-bar">
+        <div class="container tech-bar-inner">
+            <span class="tech-bar-label">Powered by</span>
+            <div class="tech-pills">
+                <div class="tech-pill">
+                    <i class="fas fa-brain"></i>
+                    <span>Gemini 3 Pro Image</span>
+                    <span class="pill-tag">Scenes</span>
+                </div>
+                <div class="tech-pill">
+                    <i class="fas fa-video"></i>
+                    <span>Veo 3.1</span>
+                    <span class="pill-tag">Video</span>
+                </div>
+                <div class="tech-pill">
+                    <i class="fas fa-bolt"></i>
+                    <span>Gemini 3.1 Flash</span>
+                    <span class="pill-tag">Agent Logic</span>
+                </div>
+                <div class="tech-pill">
+                    <i class="fas fa-tools"></i>
+                    <span>ADK</span>
+                    <span class="pill-tag">Orchestration</span>
+                </div>
+                <div class="tech-pill">
+                    <i class="fab fa-python"></i>
+                    <span>Python SDK</span>
+                    <span class="pill-tag">Runtime</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ░░ FEATURES ░░ -->
+    <section id="features" aria-label="Product features">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
+                <div class="section-tag">Capabilities</div>
                 <h2>Built for the <span class="gradient-text">Modern Creator</span></h2>
-                <p>Advanced AI tools that understand your brand as deeply as you do.</p>
+                <p>
+                    Forget templates, briefs, and production schedules. Persona Ad Gen handles
+                    the entire creative pipeline — from audience insight to broadcast-ready video —
+                    through a single conversation.
+                </p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-comments"></i>
-                    <h3>Story-Driven Briefing</h3>
-                    <p>No more boring forms. Build your ad strategy through a natural, meaningful conversation about
-                        your ideal customer.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-images"></i>
-                    <h3>Image-to-Scene Pro</h3>
-                    <p>Upload a single photo and watch Gemini transform it into diverse, professional advertising scenes
-                        tailored to your persona.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-bullseye"></i>
-                    <h3>Persona-First Design</h3>
-                    <p>Every pixel and headline is generated with a specific customer in mind, ensuring maximum
-                        resonance and conversion.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="features-bento">
 
-    <section id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>The Journey to <span class="gradient-text">Perfect Creative</span></h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-user-plus"></i>
-                    <h3>1. Define Persona</h3>
-                    <p>Tell the agent who you're reaching. What keeps them up at night? What are their dreams?</p>
+    <!-- Large: Conversational Briefing -->
+    <div class="bento-card bento-large reveal">
+        <div class="bento-icon">
+            <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="bento-body">
+                        <h3>Story-Driven Briefing</h3>
+                        <p>
+                            No cold forms. The AI agent conducts a real dialogue about your ideal
+                            customer — their fears, aspirations, daily rituals — then calibrates
+                            brand voice and emotional resonance automatically.
+                        </p>
+                        <ul class="check-list">
+                            <li><i class="fas fa-check-circle"></i> Natural language persona building</li>
+                            <li><i class="fas fa-check-circle"></i> Emotional resonance &amp; tone mapping</li>
+                            <li><i class="fas fa-check-circle"></i> Brand voice calibration</li>
+                        </ul>
+                        </div>
+                        <div class="bento-decoration" aria-hidden="true">
+                            <div class="mini-chat">
+                                <div class="mini-msg a">What drives your customer?</div>
+                                <div class="mini-msg u">Freedom. Authenticity. Movement.</div>
+                                <div class="mini-msg a">Got it. Generating now…</div>
+                            </div>
+                        </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-camera"></i>
-                    <h3>2. Upload Assets</h3>
-                    <p>Provide a base image. Whether it's a product shot or a lifestyle photo, it's our starting point.
+<!-- Image to Scene -->
+<div class="bento-card reveal">
+    <div class="bento-icon">
+        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Image-to-Scene</h3>
+                    <p>
+                        One base photo. Four distinct, professional ad scenes — each with a
+                        unique environment adapted to your persona while maintaining visual
+                        consistency. Powered by Gemini 3 Pro Image.
                     </p>
+                    <div class="four-scenes-preview" aria-hidden="true">
+                        <div class="scene-thumb s1"><i class="fas fa-mountain-sun"></i></div>
+                        <div class="scene-thumb s2"><i class="fas fa-city"></i></div>
+                        <div class="scene-thumb s3"><i class="fas fa-water"></i></div>
+                        <div class="scene-thumb s4"><i class="fas fa-tree"></i></div>
+                    </div>
+                    </div>
+                    
+                    <!-- Video Extension -->
+                    <div class="bento-card reveal">
+                        <div class="bento-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Cinematic Video Extension</h3>
+                        <p>
+                            Each generated scene is extended into an 8-second cinematic video by Veo 3.1 —
+                            with native audio synchronization, temporal consistency, and 24 FPS output.
+                            All four scenes are concatenated into one production-ready reel.
+                        </p>
+                        <div class="video-spec-row" aria-hidden="true">
+                            <span class="spec-chip"><i class="fas fa-film"></i> 24 FPS</span>
+                            <span class="spec-chip"><i class="fas fa-volume-up"></i> Native Audio</span>
+                            <span class="spec-chip"><i class="fas fa-expand"></i> Up to 4K</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Headline -->
+                    <div class="bento-card bento-sm reveal">
+                        <div class="bento-icon">
+                            <i class="fas fa-heading"></i>
+                        </div>
+                        <h3>Intelligent Headlines</h3>
+                        <p>
+                            Context-aware headlines generated to match each scene's visual mood
+                            and the persona's emotional state. Every word earns its place.
+                        </p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-wand-magic-sparkles"></i>
-                    <h3>3. Generate & Refine</h3>
-                    <p>The Creative Agent generates 4 tailored scenes with headlines, ready for your approval.</p>
+<!-- Persona-First -->
+<div class="bento-card bento-sm reveal">
+    <div class="bento-icon">
+        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Persona-First Design</h3>
+                    <p>
+                        Every pixel is generated with a specific human in mind.
+                        Maximum resonance, maximum conversion potential — no generic output.
+                    </p>
+                    </div>
+                    
+                    <!-- Speed -->
+                    <div class="bento-card bento-sm reveal">
+                        <div class="bento-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Speed to Asset</h3>
+                        <p>
+                            From briefing to four production-ready videos in under five minutes.
+                            Iterate faster than a creative brief can be read.
+                        </p>
+                        <div class="speed-indicator" aria-hidden="true">
+                            <div class="speed-bar" style="--w: 100%"><span>Traditional</span><em>2–4 weeks</em></div>
+                            <div class="speed-bar accent" style="--w: 3%"><span>Persona AdGen</span><em>&lt;5 min</em></div>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ░░ PIPELINE ░░ -->
+    <section id="pipeline" class="pipeline-section" aria-label="How it works">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">The Pipeline</div>
+                <h2>From Conversation to <span class="gradient-text">Broadcast-Ready</span></h2>
+                <p>
+                    A fully automated, multi-model creative pipeline — orchestrated by ADK and
+                    driven by a single conversation with your Creative Agent.
+                </p>
+            </div>
+<div class="pipeline-track">
+
+    <div class="pipeline-step reveal">
+        <div class="step-index">01</div>
+        <div class="step-card">
+            <div class="step-icon-wrap">
+                <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>Define the Persona</h3>
+                        <p>
+                            Talk to the Creative Agent like you would a human strategist.
+                            Share who you're reaching: their world, language, anxieties,
+                            and desires. The richer the story, the sharper the output.
+                        </p>
+                        <div class="step-model">
+                            <i class="fas fa-brain"></i> Gemini 3.1 Flash
+                        </div>
+                        </div>
+                        <div class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        
+                        <div class="pipeline-step reveal">
+                            <div class="step-index">02</div>
+                            <div class="step-card">
+                                <div class="step-icon-wrap">
+                                    <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Upload a Base Image</h3>
+                        <p>
+                            Drop in a product shot, lifestyle photo, or even a rough concept image.
+                            It's your creative launchpad — the AI handles the transformation.
+                        </p>
+                        <div class="step-model">
+                            <i class="fas fa-image"></i> Your asset
+                        </div>
+                        </div>
+                        <div class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        
+                        <div class="pipeline-step reveal">
+                            <div class="step-index">03</div>
+                            <div class="step-card">
+                                <div class="step-icon-wrap">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <h3>Generate 4 Ad Scenes</h3>
+                                <p>
+                                    Gemini 3 Pro Image renders four distinct advertising scenes —
+                                    each with unique environment, mood, and a persona-matched headline —
+                                    while maintaining visual consistency with your source.
+                                </p>
+                                <div class="step-model">
+                                    <i class="fas fa-brain"></i> Gemini 3 Pro Image
+                                </div>
+                            </div>
+                            <div class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        
+                        <div class="pipeline-step reveal">
+                            <div class="step-index">04</div>
+                            <div class="step-card">
+                                <div class="step-icon-wrap">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                                <h3>Extend Each Scene to 8s Video</h3>
+                                <p>
+                                    Veo 3.1 takes each generated scene and extends it into a cinematic
+                                    8-second video with native audio and 24 FPS temporal consistency.
+                                    Four scenes × 8 seconds each.
+                                </p>
+                                <div class="step-model">
+                                    <i class="fas fa-video"></i> Veo 3.1 via Vertex AI
+                                </div>
+                            </div>
+                            <div class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        
+                        <div class="pipeline-step reveal">
+                            <div class="step-index">05</div>
+                            <div class="step-card step-card--final">
+                                <div class="step-icon-wrap">
+                                    <i class="fas fa-clapperboard"></i>
+                                </div>
+                                <h3>Concatenate into One Reel</h3>
+                                <p>
+                                    All four 8-second videos are automatically concatenated into a single,
+                                    production-ready 29-second advertising reel — ready for campaign use.
+                                </p>
+                        <div class="step-model success">
+                            <i class="fas fa-check-circle"></i> 29s · Production Ready
+                        </div>
+                        </div>
+                        </div>
+                        
+                        </div>
+                        
+                        <!-- Pipeline summary bar -->
+                        <div class="pipeline-summary reveal">
+                            <div class="summary-item">
+                                <i class="fas fa-comments"></i>
+                                <span>1 Conversation</span>
+                </div>
+                <div class="summary-arrow">→</div>
+                <div class="summary-item">
+                    <i class="fas fa-image"></i>
+                    <span>1 Photo</span>
+                </div>
+                <div class="summary-arrow">→</div>
+                <div class="summary-item">
+                    <i class="fas fa-images"></i>
+                    <span>4 Ad Scenes</span>
+                </div>
+                <div class="summary-arrow">→</div>
+                <div class="summary-item">
+                    <i class="fas fa-film"></i>
+                    <span>4 × 8s Videos</span>
+                </div>
+                <div class="summary-arrow">→</div>
+                <div class="summary-item highlight">
+                    <i class="fas fa-clapperboard"></i>
+                    <span>29s Final Reel</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="showcase">
+    <!-- ░░ SHOWCASE ░░ -->
+    <section id="showcase" aria-label="Output showcase">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
+                <div class="section-tag">Real Results</div>
                 <h2>Witness the <span class="gradient-text">Transformation</span></h2>
-                <p>Real results from our latest test sessions.</p>
+                <p>
+                    Unfiltered, unretouched outputs from live generation sessions.
+                    Source image in, cinematic ad reel out.
+                </p>
             </div>
-            <div class="showcase-grid">
-                <!-- Urban Explorer Example -->
-                <div class="showcase-item">
-                    <div class="showcase-visual">
-                        <img src="assets/showcase_urban.png" alt="Urban Explorer Scene">
-                        <div class="visual-label">
-                            <span>Final Scene: Urban Explorer</span>
-                            <span class="gradient-text">Nano Banana 2</span>
-                        </div>
+<div class="showcase-stack">
+
+    <!-- ── Showcase 1: Split + Video ── -->
+    <article class="showcase-item reveal" aria-label="Outdoor Adventure showcase">
+        <div class="showcase-media">
+
+            <div class="showcase-split-view">
+                <!-- Source -->
+                <div class="split-pane split-source">
+                    <img src="assets/example_scene.jpg" alt="Source photograph used as input" loading="lazy">
+                    <div class="pane-label source-lbl">
+                        <i class="fas fa-camera" aria-hidden="true"></i>
+                        SOURCE
                     </div>
-                    <div class="showcase-text">
+                </div>
+<!-- Divider -->
+<div class="split-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <div class="divider-icon">
+        <i class="fas fa-wand-magic-sparkles"></i>
+    </div>
+    <div class="divider-line"></div>
+</div>
+
+<!-- Result video -->
+<div class="split-pane split-result">
+    <video id="demoVideo" autoplay loop muted playsinline src="assets/scene_4.mp4"
+        aria-label="Generated cinematic advertising reel">
+    </video>
+
+    <div class="pane-label result-lbl">
+        <i class="fas fa-film" aria-hidden="true"></i>
+        RESULT
+    </div>
+
+    <!-- Unmute overlay -->
+    <button class="unmute-btn" id="unmuteBtn" aria-label="Click to unmute video">
+        <i class="fas fa-volume-xmark"></i>
+        <span>Tap to unmute</span>
+    </button>
+</div>
+</div>
+
+<!-- Pipeline badge below media -->
+<div class="media-footer">
+    <div class="pipeline-badge">
+        <span class="badge-step">1 photo</span>
+        <i class="fas fa-arrow-right"></i>
+        <span class="badge-step">4 scenes</span>
+        <i class="fas fa-arrow-right"></i>
+        <span class="badge-step">4 × 8s videos</span>
+        <i class="fas fa-arrow-right"></i>
+        <span class="badge-step accent">29s reel</span>
+    </div>
+    <div class="generated-by">
+        Generated by <span class="brand-name">Gemini 3 Pro Image</span>
+    </div>
+</div>
+</div>
+
+<div class="showcase-info">
+    <div class="showcase-tag">
+        <i class="fas fa-mountain-sun"></i> Outdoor Adventure
+    </div>
+    <h3>The Great Outdoors</h3>
+    <p>
+        Starting from a single urban lifestyle photo, Persona Ad Gen conducted a
+        persona interview targeting adventure seekers aged 28–35 who value
+        authenticity over polish.
+    </p>
+    <p>
+        Gemini 3 Pro Image generated four distinct wilderness scenes, each with
+        a unique mood and headline. Veo 3.1 then extended each scene into an 8-second
+        cinematic video. The result: a 29-second advertising reel — ready to deploy.
+    </p>
+    <div class="showcase-chips">
+        <span class="info-chip">
+            <i class="fas fa-palette"></i> Inspiring &amp; Raw
+        </span>
+        <span class="info-chip">
+            <i class="fas fa-clock"></i> Generated in &lt;5 min
+        </span>
+        <span class="info-chip">
+            <i class="fas fa-film"></i> 29s Final Reel
+        </span>
+    </div>
+</div>
+</article>
+
+<!-- ── Showcase 2: Image result ── -->
+<article class="showcase-item showcase-item--flip reveal" aria-label="Urban Professional showcase">
+    <div class="showcase-media">
+        <div class="showcase-single-view">
+            <img src="assets/showcase_urban.png" alt="Generated Urban Professional advertising scene" loading="lazy">
+            <div class="pane-label result-lbl" style="left: auto; right: 0.85rem;">
+                <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                RESULT
+            </div>
+        </div>
+        <div class="media-footer">
+            <div class="pipeline-badge">
+                <span class="badge-step">Portrait</span>
+                <i class="fas fa-arrow-right"></i>
+                <span class="badge-step accent">Urban fashion story</span>
+            </div>
+            <div class="generated-by">
+                Generated by <span class="brand-name">Gemini 3 Pro Image</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="showcase-info">
+        <div class="showcase-tag">
+            <i class="fas fa-city"></i> Urban Fashion
+        </div>
                         <h3>Urban Professional</h3>
-                        <p>Transformed a simple portrait into a sophisticated urban fashion story. Capturing the soul of
-                            the city with style that moves as fast as you do. Perfect for high-end fashion and urban
-                            lifestyle brands.</p>
-                        <div class="cta-group">
-                            <span class="btn btn-outline" style="cursor: default">Mood: Sophisticated</span>
+                        <p>
+                            A simple studio portrait transformed into a sophisticated urban fashion
+                            narrative. The persona brief targeted high-achieving professionals, 28–40,
+                            who see their city as both their arena and their identity.
+                        </p>
+                        <p>
+                            Gemini 3 Pro Image adapted the subject's environment to an electric,
+                            rain-soaked cityscape — capturing the soul of the city with style
+                            that moves as fast as you do.
+                        </p>
+                        <div class="showcase-chips">
+                            <span class="info-chip">
+                                <i class="fas fa-palette"></i> Sophisticated
+                            </span>
+                            <span class="info-chip">
+                                <i class="fas fa-star"></i> High-Fidelity Scene
+                            </span>
+                            <span class="info-chip">
+                                <i class="fas fa-bullseye"></i> Persona-Matched
+                            </span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Outdoor Adventure Example -->
-                <div class="showcase-item">
-                    <div class="showcase-visual">
-                        <img src="assets/showcase_outdoor.png" alt="Outdoor Adventure Scene">
-                        <div class="visual-label">
-                            <span>Final Scene: Pacific Trail</span>
-                            <span class="gradient-text">Nano Banana 2</span>
-                        </div>
+            </div>
+        </div>
+        </section>
+
+    <!-- ░░ WHO IT'S FOR ░░ -->
+    <section id="audience" class="audience-section" aria-label="Target audience">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Who It's For</div>
+                <h2>Built for <span class="gradient-text">Three Kinds</span> of Creator</h2>
+                <p>Whether you're pitching a global campaign or testing a new DTC product line,
+                    Persona Ad Gen fits the way you actually work.</p>
+            </div>
+    
+            <div class="audience-grid">
+                <div class="audience-card reveal">
+                    <div class="audience-icon">
+                        <i class="fas fa-building"></i>
                     </div>
-                    <div class="showcase-text">
-                        <h3>The Great Outdoors</h3>
-                        <p>Starting with a separate lifestyle photo, this agent transforms the subject into a rugged,
-                            inspiring wilderness
-                            setting. Perfect for outdoor gear and adventure travel brands.</p>
-                        <div class="cta-group">
-                            <span class="btn btn-outline" style="cursor: default">Mood: Adventurous</span>
-                        </div>
+                    <h3>Creative Agencies</h3>
+                    <p>
+                        Rapidly prototype full campaign concepts for client presentations.
+                        Generate four distinct creative directions in the time it takes to
+                        write a single brief. Impress before the meeting even starts.
+                    </p>
+                    <ul class="audience-list">
+                        <li><i class="fas fa-arrow-right"></i> Rapid concept prototyping</li>
+                        <li><i class="fas fa-arrow-right"></i> Multi-persona campaign testing</li>
+                        <li><i class="fas fa-arrow-right"></i> Client-ready output, instantly</li>
+                    </ul>
+                </div>
+<div class="audience-card audience-card--featured reveal">
+    <div class="featured-badge">Most Popular</div>
+    <div class="audience-icon">
+        <i class="fas fa-store"></i>
                     </div>
+                    <h3>DTC Brands</h3>
+                    <p>
+                        Create localized, persona-specific ad variations at scale. Test a
+                        dozen audiences with a dozen creatives — without a single additional
+                        shoot day or production budget.
+                    </p>
+                    <ul class="audience-list">
+                        <li><i class="fas fa-arrow-right"></i> Localized creative at scale</li>
+                        <li><i class="fas fa-arrow-right"></i> Zero production overhead</li>
+                        <li><i class="fas fa-arrow-right"></i> Rapid A/B creative testing</li>
+                    </ul>
+                    </div>
+<div class="audience-card reveal">
+    <div class="audience-icon">
+        <i class="fas fa-mobile-screen"></i>
+                    </div>
+                    <h3>Social Media Managers</h3>
+                    <p>
+                        Generate high-fidelity, platform-native video content without
+                        specialized gear, a production team, or a large budget. Just a
+                        conversation and a photo.
+                    </p>
+                    <ul class="audience-list">
+                        <li><i class="fas fa-arrow-right"></i> No production equipment needed</li>
+                        <li><i class="fas fa-arrow-right"></i> Platform-ready video output</li>
+                        <li><i class="fas fa-arrow-right"></i> Always-on content velocity</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="cta" class="cta-section">
+    <!-- ░░ METRICS ░░ -->
+    <section class="metrics-section" aria-label="Success metrics">
         <div class="container">
-            <h2 style="font-size: 3.5rem; margin-bottom: 2rem">Ready to <span class="gradient-text">Tell Your
-                    Story?</span></h2>
-            <p style="font-size: 1.25rem; opacity: 0.7; margin-bottom: 3rem">Start generating highly personalized ads
-                with Persona Ad Gen.</p>
-            <a href="https://github.com/mbettan/PersonaAdGen" class="btn btn-primary">Get Started Now</a>
+            <div class="metrics-grid reveal">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-stopwatch"></i></div>
+                    <div class="metric-value">&lt;5<span class="metric-unit">min</span></div>
+                    <div class="metric-label">Brief to 4 production videos</div>
+                    <div class="metric-sub">vs. 2–4 weeks traditional</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-film"></i></div>
+                    <div class="metric-value">4K</div>
+                    <div class="metric-label">Max resolution support</div>
+                    <div class="metric-sub">for all 8-second video outputs</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-photo-film"></i></div>
+                    <div class="metric-value">29<span class="metric-unit">s</span></div>
+                    <div class="metric-label">Final concatenated reel</div>
+                    <div class="metric-sub">4 scenes × 8 seconds each</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-heart"></i></div>
+                    <div class="metric-value">100<span class="metric-unit">%</span></div>
+                    <div class="metric-label">Persona-aligned output</div>
+                    <div class="metric-sub">every pixel, every word</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer
-        style="padding: 4rem 0; border-top: 1px solid var(--glass-border); text-align: center; opacity: 0.5; font-size: 0.9rem">
+    <!-- ░░ CTA ░░ -->
+    <section class="cta-section" aria-label="Call to action">
         <div class="container">
-            <p>&copy; 2026 Persona Ad Gen. Powered by Nano Banana 2 (Gemini 3.1 Flash Image Preview), Gemini 3.1 models
-                & ADK.</p>
+            <div class="cta-card reveal">
+                <div class="cta-glow" aria-hidden="true"></div>
+                <div class="cta-body">
+                    <div class="section-tag" style="margin: 0 auto 1.5rem; width: fit-content;">
+                        Start Creating
+                    </div>
+                    <h2>
+                        Ready to Tell<br>
+                        <span class="gradient-text">Your Story?</span>
+                    </h2>
+                    <p>
+                        Join creators transforming their advertising workflow with
+                        persona-driven AI storytelling. Open-source, extensible, and
+                        production-ready today.
+                    </p>
+                    <div class="cta-group">
+                        <a href="https://github.com/mbettan/PersonaAdGen" class="btn btn-primary btn-lg" target="_blank"
+                            rel="noopener">
+                            <i class="fab fa-github"></i>
+                            Get Started on GitHub
+                        </a>
+                        <a href="#showcase" class="btn btn-ghost">
+                            See More Examples
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </section>
+            
+            <!-- ░░ FOOTER ░░ -->
+            <footer aria-label="Site footer">
+                <div class="container footer-inner">
+                    <div class="footer-brand">
+                        <a href="#top" class="logo" aria-label="Back to top">
+                            <span class="logo-icon" aria-hidden="true">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                            </span>
+                            Persona<span class="gradient-text">AdGen</span>
+                        </a>
+                        <p>Turning conversations into campaigns.</p>
+                    </div>
+            
+                    <nav class="footer-nav" aria-label="Footer navigation">
+                        <a href="#features">Features</a>
+                        <a href="#pipeline">Pipeline</a>
+                        <a href="#showcase">Showcase</a>
+                        <a href="#audience">Who It's For</a>
+                        <a href="https://github.com/mbettan/PersonaAdGen" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </nav>
+            
+                    <div class="footer-copy">
+                        <p>
+                            &copy; 2026 Persona Ad Gen &mdash; Powered by
+                            <strong>Gemini 3 Pro Image</strong>,
+                            <strong>Veo 3.1</strong>,
+                            <strong>Gemini 3.1 Flash</strong> &amp; <strong>ADK</strong>.
+                        </p>
+                        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">
+                            All generated media includes invisible SynthID watermarking for AI identification and adheres to strict
+                            safety filter guidelines.
+                        </p>
+                    </div>
         </div>
     </footer>
 
+    <!-- ░░ SCRIPTS ░░ -->
     <script>
-        // Subtle parallax effect for floating blobs
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+                /* ── Navbar scroll state ── */
+                const navbar = document.getElementById('navbar');
+                const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+                window.addEventListener('scroll', onScroll, { passive: true });
 
-            document.querySelectorAll('.blob').forEach((blob, index) => {
-                const speed = (index + 1) * 20;
-                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                /* ── Video unmute ── */
+                const video = document.getElementById('demoVideo');
+                const unmuteBtn = document.getElementById('unmuteBtn');
+
+                if (video && unmuteBtn) {
+                    const unmute = () => {
+                        video.muted = false;
+                        video.play().catch(() => { video.muted = true; });
+                        unmuteBtn.classList.add('hidden');
+                    };
+                    unmuteBtn.addEventListener('click', unmute);
+                    // Also unmute on any page interaction if user prefers
+                    const globalUnmute = () => {
+                        if (video.muted) unmute();
+                        document.removeEventListener('click', globalUnmute);
+                    };
+                    document.addEventListener('click', globalUnmute);
+                }
+
+                /* ── Smooth scroll ── */
+                document.querySelectorAll('a[href^="#"]').forEach(a => {
+                    a.addEventListener('click', e => {
+                        const target = document.querySelector(a.getAttribute('href'));
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+
+                /* ── Scroll reveal ── */
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            revealObserver.unobserve(entry.target);
+                        }
             });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach((el, i) => {
+                el.style.transitionDelay = `${(i % 5) * 0.08}s`;
+                revealObserver.observe(el);
         });
 
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+                /* ── Blob parallax ── */
+                let ticking = false;
+                document.addEventListener('mousemove', e => {
+                    if (ticking) return;
+                    ticking = true;
+                    requestAnimationFrame(() => {
+                        const x = (e.clientX / window.innerWidth) - 0.5;
+                        const y = (e.clientY / window.innerHeight) - 0.5;
+                        document.querySelectorAll('.blob').forEach((blob, i) => {
+                            const d = (i + 1) * 18;
+                            blob.style.transform = `translate(${x * d}px, ${y * d}px)`;
                 });
+                    ticking = false;
             });
         });
     </script>
-</body>
 
+</body>
 </html>

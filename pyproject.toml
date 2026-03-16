@@ -13,6 +13,7 @@ google-adk = {version = "^1.0.0", extras = ["web"]}
 google-genai = "^1.32.0"
 pydantic = "^2.10.6"
 python-dotenv = "^1.0.1"
+google-cloud-storage = "^2.14.0"
 google-cloud-aiplatform = { version = "^1.111.0", extras = [
     "adk",
     "agent-engines",
