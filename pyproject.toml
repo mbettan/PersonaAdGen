@@ -5,7 +5,7 @@ description = "Personalized Ad Creation Engine: An AI agent that generates adver
 authors = ["Michael Bettan"]
 license = "Apache License 2.0"
 readme = "README.md"
-packages = [{include = "persona_ad_gen", from = "src"}]
+packages = [{include = "persona_ad_gen"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

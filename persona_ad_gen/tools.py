@@ -33,6 +33,13 @@ DEFAULT_OUTPUT_BUCKET = os.environ.get("ADK_GCS_BUCKET_NAME", "your-bucket-name"
 DEFAULT_OUTPUT_GCS_URI = f"gs://{DEFAULT_OUTPUT_BUCKET}/persona_ads/"
 
 def get_genai_client(location: Optional[str] = None):
+    api_key = os.environ.get("GOOGLE_CLOUD_API_KEY")
+    if api_key:
+        return genai.Client(
+            vertexai=True,
+            api_key=api_key
+        )
+    
     project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
     env_location = os.environ.get("GOOGLE_CLOUD_LOCATION", DEFAULT_REGION)
     final_location = location or env_location
@@ -125,8 +132,16 @@ async def edit_scene_image(
         # RESILIENCE: Auto-discovery if specific artifact is missing
         if not anchor_image_part:
             print(f"🔍 Artifact '{anchor_image_filename}' not found. Attempting auto-discovery...")
+            
+            # 0. Try base_image_filename if it was a sequential reference that failed
+            if reference_image_filename and "base_image_filename" in tool_context.state:
+                base_name = tool_context.state["base_image_filename"]
+                print(f"🔄 Falling back to base image: {base_name}")
+                anchor_image_part = await tool_context.load_artifact(filename=base_name)
+                
             # 1. Try input_file_0.png as a standard adk fallback
-            anchor_image_part = await tool_context.load_artifact(filename="input_file_0.png")
+            if not anchor_image_part:
+                anchor_image_part = await tool_context.load_artifact(filename="input_file_0.png")
             
             # 2. Scan user_content and history for any image part
             if not anchor_image_part:

@@ -29,13 +29,15 @@ async def generate_headlines_from_brief(tool_context: ToolContext) -> str:
     print(f"🎭 Tone: {tone_of_voice}")
     
     try:
-        # Get project information from environment
-        project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
-        if not project_id:
-            raise ValueError("GOOGLE_CLOUD_PROJECT environment variable not set")
-        
-        # Initialize the client with Vertex AI configuration
-        client = genai.Client(vertexai=True, project=project_id)
+        location = os.environ.get("GOOGLE_CLOUD_LOCATION")
+        api_key = os.environ.get("GOOGLE_CLOUD_API_KEY")
+        if api_key:
+            client = genai.Client(vertexai=True, api_key=api_key, location=location)
+        else:
+            project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
+            if not project_id:
+                raise ValueError("GOOGLE_CLOUD_PROJECT or GOOGLE_CLOUD_API_KEY environment variable not set")
+            client = genai.Client(vertexai=True, project=project_id, location=location)
         
         # Create the headline generation prompt
         headline_prompt = f"""You are an expert advertising copywriter specializing in creating compelling headlines that convert.
